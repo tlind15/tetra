@@ -26,50 +26,95 @@ Search.prototype.fetchArticle = function (criteria) {
 
 Search.prototype.fetchDefinition = function (criteria) {
     /*Access word, part of speech, definition, call theasaurus apiand get 5 synonyms. repeat for each word in criteria. if criteria > 5 cant do it */
-    var words = ["despair"];
-    for (var k=0; k < words.length; k++) {
-        $.ajax({
-            url : "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + words[k] + "?key=cdd30743-539d-4551-8374-7e7f133cffa7",
-            dataType : "xml",
-            async: false,
-            success : function(parsed_xml) {
-                //document.write((new XMLSerializer()).serializeToString(parsed_xml));
-                var defs = parsed_xml.getElementsByTagName("dt");
-                for (var j=0; j < defs.length; j++) {
-                    if (j > 0 && parsed_xml.getElementsByTagName("ew")[j].childNodes[0].nodeValue !=
-                        parsed_xml.getElementsByTagName("ew")[j-1].childNodes[0].nodeValue) {
-                        break;
-                    }
-                    if (j == 0)
-                        alert(parsed_xml.getElementsByTagName("ew")[j].childNodes[0].nodeValue); //word
+        jQuery(document).ready(function($) {
+            for (var k=0; k < criteria.length; k++) {
+            $.ajax({
+                url : "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + criteria[k].toLowerCase() + "?key=cdd30743-539d-4551-8374-7e7f133cffa7",
+                dataType : "xml",
+                async: false,
+                success : function(parsed_xml) {
+                    //document.write((new XMLSerializer()).serializeToString(parsed_xml));
+                    var defs = parsed_xml.getElementsByTagName("dt");
+                    var size = defs.length;
+                    for (var j=0; j < size; j++) {
 
-                    alert(parsed_xml.getElementsByTagName("fl")[j].childNodes[0].nodeValue); //part of speech
-
-                    var data = parsed_xml.getElementsByTagName("dt")[j].childNodes;
-                    var text = "";
-                    var tag = "";
-                    for (var i = 0; i < data.length; i++) {
-                        tag = parsed_xml.getElementsByTagName("dt")[j].childNodes[i].tagName;
-                        if (tag === undefined) {
-                            text += data[i].nodeValue;
+                        if (parsed_xml.getElementsByTagName("ew")[j] !== undefined) {
+                            if (j > 0 && parsed_xml.getElementsByTagName("ew")[j].childNodes[0].nodeValue.toLowerCase() !=
+                                parsed_xml.getElementsByTagName("ew")[j-1].childNodes[0].nodeValue.toLowerCase()) {
+                                alert("goodbye");
+                                break;
+                            }
+                            if (j == 0)
+                                alert(parsed_xml.getElementsByTagName("ew")[j].childNodes[0].nodeValue.toLowerCase()); //word
                         }
 
-                        else if (typeof(text) === 'string') {
-                            if (tag == "d_link")
-                                text += parsed_xml.getElementsByTagName("d_link")[j].childNodes[0].nodeValue;
+                        var data = parsed_xml.getElementsByTagName("dt")[j].childNodes;
+                        var text = "";
+                        var tag = "";
+                        for (var i = 0; i < data.length; i++) {
+                            tag = data[i].tagName;
+
+                            if (data[i].nodeValue !== null && data[i].nodeValue.length > 1) {
+                                if (i == 0) {
+                                    if (parsed_xml.getElementsByTagName("fl")[j] !== undefined)
+                                        alert(parsed_xml.getElementsByTagName("fl")[j].childNodes[0].nodeValue); //part of speech
+                                }
+                                if (tag === undefined)
+                                    text += data[i].nodeValue;
+
+                            }
+                            if (typeof(tag) === 'string') {
+                                if (tag == "d_link")
+                                    text += parsed_xml.getElementsByTagName("d_link")[j].childNodes[0].nodeValue;
+                                else if (tag == "un")
+                                    text += parsed_xml.getElementsByTagName("un")[j].childNodes[0].nodeValue;
+                                else if (tag == "fw")
+                                    text += parsed_xml.getElementsByTagName("fw")[j].childNodes[0].nodeValue;
+                            }
+                        }
+                        var index = text.substring(text.indexOf(":")+1).indexOf(":"); //weed out extra info which is typically followed by a second semi colon
+                        if (index > 0) //indexOf return -1 if character not found so this check checks if string has more than one ":"
+                            text = text.substring(0,index);
+                        if (text !== null && text !== undefined && text.length > 0) {
+                            alert(text);
                         }
                     }
-                    alert(text);
+                },
+                error:function() {
+                    alert("We couldn't find any matches for your entry " + criteria[k]);
                 }
-            },
-            error:function() {
-                alert("Error");
-            }
-        });
-    }
+            });
 
+            $.ajax({
+                url : "http://www.dictionaryapi.com/api/v1/references/thesaurus/xml/" + criteria[k].toLowerCase() + "?key=d63a1150-3389-489a-bd16-740157ca5250",
+                dataType : "xml",
+                async: false,
+                success : function(parsed_xml) {
+                    if (parsed_xml.getElementsByTagName("syn")[0] != null) {
+                        var synonyms = parsed_xml.getElementsByTagName("syn")[0].childNodes;
+                        var size = synonyms.length;
+                        var text = "";
+                        var word = "";
+                        for (var i = 0; i < size; i++) {
+                            word = synonyms[i].nodeValue;
+                            if (word !== null) {
+                                text += word;
+                                if (i < size - 1)
+                                    text += ", ";
+                            }
+                        }
+                        text = text.replace(/ *\([^)]*\) */g, ""); //removes all parentheses
+                        alert(text);
+                    } else
+                        alert("We couldn't find any synonyms in our records.")
+                },
+                error:function() {
+                    alert("Error");
+                }
+            });
+        }
+    });
 };
-
 
 Search.prototype.fetchCollege = function (criteria) {
 
