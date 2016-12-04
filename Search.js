@@ -10,14 +10,16 @@ earch = function(category, criteria) {
 
 Search.prototype.fetchArticle = function (criteria) {
     $.ajax({
-        url : "https://newsapi.org/v1/articles?source=techcrunch&apiKey=fafa607d11c049fbb595f727ca23d65b",
+        url : "http://content.guardianapis.com/search?show-fields=bodyText,thumbnail&order-by=relevance&q=trump&api-key=85b6efa7-0a2a-416c-8d8b-40e8a2475e7b",
         dataType : "json",
         async: false,
         success : function(parsed_json) {
-            var url = parsed_json.articles[0].url;
-            document.write(url);
-            var description = parsed_json.articles[0].description;
-            alert(description);
+            var num_articles = 5;
+            for (var i = 0; i < num_articles; i++) {
+                alert(parsed_json.response.results[i].webTitle);
+                alert(parsed_json.response.results[i].fields.bodyText);
+                alert(parsed_json.response.results[i].webUrl);
+            }
 
         }
     });
