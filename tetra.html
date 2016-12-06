@@ -1,0 +1,228 @@
+<link rel="stylesheet" type="text/css" href="tetra.css" media="screen" />
+
+<div id="help-box">
+  Hello and welcome to <i>Tetra</i>, your webpage organizer!
+  <p>The intent of <i>Tetra</i> is to make searching and storing information easier for you!  So far, you have access to 4 main search functions: Article, City, College, and Definition.</p>
+  <p><u>Article:</u> Pulls up to five news articles related to your search criteria.</p>
+  <p><u>City:</u> Shows weather and three cheap food options inside the city.</p>
+  <p><u>College:</u> Displays popular majors of college and tuition cost.</p>
+  <p><u>Definition:</u> Displays up to five words with their definition and part of speech.</p>
+  <p>The default view will be one panel open, but you can open more by clicking the plus button!(max 4 panels)</p>
+  <p>Click the "X" button to close this panel and get started!  If you need to see this again, just press the Question Mark, enjoy!</p>
+  <div class="help-close-button" onclick="getElementById('help-box').style.display='none'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg>
+  </div>
+  
+</div>
+
+<div id="header-box">
+  <b><i>Tetra</i></b>: Your Webpage Information Organizer
+  <div class="help-button" onclick="getElementById('help-box').style.display='block'">
+    <img src="http://www.clipartkid.com/images/139/black-and-white-question-mark-clipart-0808-0710-3113-3562-jpg-avEitD-clipart.jpg">
+     <span class="tooltip">Opens help window.</span>
+  </div>
+  
+  <div id="tetra-symbol">
+    <img src="http://imgur.com/fu66gJd">
+  </div>
+</div>
+
+<div id="four-panels">
+  <div class="plus-sign2">
+      <svg width=100% height=100%>
+        <rect x=20% width=25% height=90%
+        style="fill:gray;fill-opacity:1.0;" />
+        <rect y=30% width=65% height=30%
+        style="fill:gray;fill-opacity:1.0;" />
+      </svg>
+      <span class="tooltip">Max panels reached.</span>
+  </div>
+  <div id="four-topleftbox">
+
+  </div>
+
+  <div id="four-toprightbox">
+
+  </div>
+
+  <div id="four-botleftbox">
+
+  </div>
+
+  <div id="four-botrightbox">
+
+  </div>
+  
+  <div class="fourUpL-close" onclick="getElementById('three-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+  <div class="fourUpR-close" onclick="getElementById('three-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+  <div class="fourDownL-close" onclick="getElementById('three-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+
+  <div class="fourDownR-close" onclick="getElementById('three-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+  <div id="searchbar-topleft-four" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-topright-four" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-botleft-four" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-botright-four" contenteditable="true">
+
+  </div>
+</div>
+
+<div id="three-panels">
+  <div class="plus-sign" onclick="getElementById('three-panels').style.display='none'">
+      <svg width=100% height=100%>
+        <rect x=20% width=25% height=90%
+        style="fill:blue;fill-opacity:1.0;" />
+        <rect y=30% width=65% height=30%
+        style="fill:blue;fill-opacity:1.0;" />
+      </svg>
+      <span class="tooltip">Add 4th panel.</span>
+  </div>
+  <div id="three-mainbox">
+
+  </div>
+
+  <div id="three-leftbox">
+
+  </div>
+
+  <div id="three-rightbox">
+
+  </div>
+  
+   <div class="threeUp-close" onclick="getElementById('two-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+   <div class="threeLeft-close" onclick="getElementById('two-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+   <div class="threeRight-close" onclick="getElementById('two-panels').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+  <div id="searchbar-main-three" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-left-three" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-right-three" contenteditable="true">
+
+  </div>
+</div>
+
+<div id="two-panels">
+  <div class="plus-sign" onclick="getElementById('two-panels').style.display='none'">
+      <svg width=100% height=100%>
+        <rect x=20% width=25% height=90%
+        style="fill:blue;fill-opacity:1.0;" />
+        <rect y=30% width=65% height=30%
+        style="fill:blue;fill-opacity:1.0;" />
+      </svg>
+      <span class="tooltip">Add 3rd panel.</span>
+  </div>
+  <div id="two-leftbox">
+
+  </div>
+
+  <div id="two-rightbox">
+
+  </div>
+  
+  <div class="twoLeft-close" onclick="getElementById('one-panel').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+  
+    <div class="twoRight-close" onclick="getElementById('one-panel').style.display='block'">
+     <svg height=100% width=100%>
+       <line x1=0% y1=0% x2=100% y2=100% style="stroke:rgb(255,0,0);stroke-width:2" />
+       <line x1=0% y1=100% x2=100% y2=0% style="stroke:rgb(255,0,0);stroke-width:2" />
+     </svg> 
+  </div>
+
+  <div id="searchbar-left-two" contenteditable="true">
+
+  </div>
+
+  <div id="searchbar-right-two" contenteditable="true">
+
+  </div>
+</div>
+
+<div id="one-panel">
+  <div class="plus-sign" onclick="getElementById('one-panel').style.display='none'">
+      <svg width=100% height=100%>
+        <rect x=20% width=25% height=90%
+        style="fill:blue;fill-opacity:1.0;" />
+        <rect y=30% width=65% height=30%
+        style="fill:blue;fill-opacity:1.0;" />
+      </svg>
+      <span class="tooltip">Add 2nd panel.</span>
+  </div>
+  <div id="main-box">
+    <span>Example of Output</span>
+  </div>
+
+  <div id="searchbar-main" contenteditable="true" type="text">
+
+  </div>
+
+  <div class="category-main-dropdown">
+    <button class="category-main">Categories</button>
+    <div class="category-main-content">
+      <a href="#">Article</a>
+      <a href="#">City</a>
+      <a href="#">College</a>
+      <a href="#">Definition</a>
+    </div>
+  </div>
+</div>
