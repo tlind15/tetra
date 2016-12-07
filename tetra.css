@@ -1,0 +1,522 @@
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#header-box {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 10%;
+  border: 4px solid black;
+  background: white;
+  position: fixed;
+  text-align: center;
+  font-size: 20px;
+  padding: 1.5%
+}
+
+#help-box {
+  top: 10%;
+  left: 0%;
+  width: 100%;
+  height: 90%;
+  background: #eeeeff;
+  border: 4px solid black;
+  position: fixed;
+  text-align: left;
+  font-size: 4vh;
+  padding: 1.5%;
+  z-index: 1;
+}
+
+.help-close-button {
+  top: 11%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.twoLeft-close{
+  top: 11.5%;
+  left: 47.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.twoRight-close{
+  top: 11.5%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.threeUp-close{
+  top: 11.5%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.threeLeft-close{
+  top: 50.5%;
+  left: 47.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.threeRight-close{
+  top: 50.5%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.fourUpL-close{
+  top: 11.5%;
+  left: 47.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.fourUpR-close{
+  top: 11.5%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.fourDownL-close{
+  top: 51.5%;
+  left: 47.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.fourDownR-close{
+  top: 51.5%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: red;
+}
+
+.plus-sign {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.plus-sign .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign:hover .tooltip {
+    visibility: visible;
+}
+
+.plus-sign2 {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+
+.plus-sign2 .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign2:hover .tooltip {
+    visibility: visible;
+}
+
+.help-button {
+  top: 1%;
+  left: 89%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  cursor: help;
+}
+
+.help-button .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 65%;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.help-button:hover .tooltip {
+    visibility: visible;
+}
+
+#tetra-symbol {
+  top: 1%;
+  left: 1%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+
+#one-panel {}
+
+#main-box {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 100%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#main-box span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#searchbar-main {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 93%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-m-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-m-sub:hover {
+	background: #eeefff;
+} 
+
+.category-main {
+  top: 96%;
+  left: 85%;
+  height: 4%;
+  width: 15%;
+  border: none;
+  position: fixed;
+  text-align: center;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.category-main-dropdown {
+  bottom: 36%;
+  right: 0%;
+  width: 15%;
+  position: absolute;
+  display: inline;
+}
+
+.category-main-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 50%;
+}
+
+.category-main-content a {
+  color: black;
+  padding: 15%;
+  text-decoration: none;
+  display: block;
+}
+
+.category-main-content a:hover {
+  background-color: #f1f1f1
+}
+
+.category-main-dropdown:hover .category-main-content {
+  display: inline;
+}
+
+.category-main-dropdown:hover .category-main {
+  background-color: #3e8e41;
+}
+
+#two-panels {}
+
+#two-leftbox {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#two-rightbox {
+  top: 11%;
+  left: 50%;
+  height: 85%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#searchbar-left-two {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-right-two {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#three-panels {}
+
+#three-mainbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 100%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#three-leftbox {
+  top: 50%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#three-rightbox {
+  top: 50%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#searchbar-main-three {
+  top: 46%;
+  left: 0%;
+  height: 4%;
+  width: 100%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-left-three {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-right-three {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#four-panels {}
+
+#four-topleftbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#four-toprightbox {
+  top: 11%;
+  left: 50%;
+  height: 35%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#four-botleftbox {
+  top: 50%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#four-botrightbox {
+  top: 50%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+}
+
+#searchbar-topleft-four {
+  top: 46%;
+  left: 0%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-topright-four {
+  top: 46%;
+  left: 50%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-botleft-four {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
+
+#searchbar-botright-four {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 50%;
+  background: #eeeeff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+}
