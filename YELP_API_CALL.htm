@@ -10,6 +10,12 @@
             <ul>
                 <li data-ng-repeat="business in businesses">
                     {{business.name}}
+		 <p>
+		     Rating: {{business.rating}}
+		 <p>
+		     Address: {{business.location.address}}
+                <p>
+		     URL: {{business.url}}
                 </li>
             </ul>
         </div>
@@ -36,7 +42,10 @@
                         var params = {
                                 callback: 'angular.callbacks._0',
 
-                                location: 'Los Angeles',
+                                location: 'Long Beach',
+				  limit: '10',
+				  sort: '2',
+
 
                                 oauth_consumer_key: '1W4uUp5JOD8lvSpSfvM9WA', //Consumer Key                                oauth_token: 'BSxa1cM2MPoOScIlq1Y8cvW_l3V9Q7u6', //Token                                oauth_signature_method: "HMAC-SHA1",                                oauth_timestamp: new Date().getTime(),                                oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),                                term: 'food'                            };                        var consumerSecret = 'Nx8eTe_1dJ_l9ZiVOx2KjmZQMec'; //Consumer Secret                        var tokenSecret = '-dbXi4Tuqz2A13WhImnaUmroVDQ'; //Token Secret
                         var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, { encodeSignature: false});
