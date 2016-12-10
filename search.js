@@ -1,6 +1,8 @@
+/**
+ * Created by tlindblom on 11/22/2016.
+ */
 Search = function(category, criteria) {
-    var timestamp = Date.now();
-    this.time = timestamp;
+    this.time = Date.now();
     this.category = category;
     this.criteria = criteria;
     this.submit = function (criteria, category) {
@@ -149,7 +151,7 @@ Search.prototype.fetchCollege = function (criteria) {
     //college search
     //logic that will convert name to a unitID
     var college = new College("", "", "", "", "", "", "");
-    var unitid = "200059"
+    var unitid = "200059";
     jQuery(document).ready(function($) {
         $.ajax({
             url : "https://nearbycolleges.info/api/everything/" + unitid,
@@ -180,9 +182,28 @@ Search.prototype.fetchCollege = function (criteria) {
     });
 
 };
-s.fetchCollege(s.criteria);
+//s.fetchCollege(s.criteria);
 
+Search.prototype.fetchWeather = function (criteria) {
+    //find Two letter state code from name of city maybe another API
+    var code = "CA";
+    var city = "San Francisco";
+    jQuery(document).ready(function($) {
+        $.ajax({
+            url : "http://api.wunderground.com/api/fbdc5ee3a169b24f/geolookup/conditions/q/" + code + "/" + city.replace(" ", "_") + ".json",
+            dataType : "jsonp",
+            success : function(parsed_json) {
+                var conditions = new Weather("", "", []);
+                conditions.city_name = parsed_json.location.city;
+                conditions.temperature = parsed_json.current_observation.temp_f;
+                conditions.current_conditions.push(parsed_json.current_observation.weather);
+                conditions.current_conditions.push(parsed_json.current_observation.icon_url);
 
-Search.prototype.fetchLocality = function (criteria) {
+                alert(JSON.stringify(conditions));
 
+            }
+        });
+    });
 };
+
+s.fetchWeather(s.criteria);
