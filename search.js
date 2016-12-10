@@ -5,19 +5,26 @@ Search = function(category, criteria) {
     this.time = Date.now();
     this.category = category;
     this.criteria = criteria;
-    this.submit = function (criteria, category) {
+    this.submit = function () {
         //based on those call appropriate api call function
+        if (category == "Article")
+            this.fetchArticle(this.criteria);
+        else if (category == "College")
+            this.fetchCollege(this.criteria);
+        else if (category == "Definition")
+            this.fetchDefinition(this.criteria);
+
     }
 };
 
 Search.prototype.fetchArticle = function (criteria) {
+    var articles = [];
     $.ajax({
         url : "http://content.guardianapis.com/search?show-fields=bodyText,thumbnail&order-by=relevance&q=" + criteria.replace(" ", "%20") + "&api-key=85b6efa7-0a2a-416c-8d8b-40e8a2475e7b",
         dataType : "json",
         async: false,
         success : function(parsed_json) {
             var num_articles = 2;
-            var articles = [];
             for (var i = 0; i < num_articles; i++) {
                 articles.push(new Article("", "", ""));
 
@@ -35,17 +42,22 @@ Search.prototype.fetchArticle = function (criteria) {
             //send text to DB
         }
     });
+    document.write(JSON.stringify(articles));
+    return articles;
 };
 
+//var s = new Search("Article", "Hillary Clinton");
+//s.submit();
 
 Search.prototype.fetchDefinition = function (criteria) {
     /*Access word, part of speech, definition, call thesaurus api and get 5 synonyms. repeat for each word in criteria. if criteria > 5 cant do it */
+    var entries = []; //holds definition objects for each word in criteria
+    var words_criteria = criteria.split(", ");
         jQuery(document).ready(function($) {
-            var entries = []; //holds definition objects for each word in criteria
-            for (var k=0; k < criteria.length; k++) {
+            for (var k=0; k < words_criteria.length; k++) {
                 entries.push(new Definition("", "", "", ""));
                 $.ajax({
-                    url : "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + criteria[k].toLowerCase() + "?key=cdd30743-539d-4551-8374-7e7f133cffa7",
+                    url : "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + words_criteria[k].toLowerCase() + "?key=cdd30743-539d-4551-8374-7e7f133cffa7",
                     dataType : "xml",
                     async: false,
                     success : function(parsed_xml) {
@@ -102,12 +114,12 @@ Search.prototype.fetchDefinition = function (criteria) {
                         }
                     },
                     error:function() {
-                        alert("We couldn't find any matches for your entry " + criteria[k]);
+                        alert("We couldn't find any matches for your entry " + words_criteria[k]);
                     }
                 });
 
                 $.ajax({
-                    url : "http://www.dictionaryapi.com/api/v1/references/thesaurus/xml/" + criteria[k].toLowerCase() + "?key=d63a1150-3389-489a-bd16-740157ca5250",
+                    url : "http://www.dictionaryapi.com/api/v1/references/thesaurus/xml/" + words_criteria[k].toLowerCase() + "?key=d63a1150-3389-489a-bd16-740157ca5250",
                     dataType : "xml",
                     async: false,
                     success : function(parsed_xml) {
@@ -129,22 +141,20 @@ Search.prototype.fetchDefinition = function (criteria) {
                         } else
                             alert("We couldn't find any synonyms in our records.");
 
-                        alert(JSON.stringify(entries[k]));
+
                     },
                     error:function() {
                         alert("Error");
                     }
                 });
         }
+        document.write(JSON.stringify(entries[0]));
+            /* loop through array entries[i].word (word) entries[i].partOfSpeech.split("  ") (parts of speech) entries[i].definition.split(":")
+            * entries[i].synonym.split(",") (synonym)*/
+        return entries;
     });
 
-
 };
-
-//var x = ["associate", "purgatory"];
-var s = new Search("a", "Hillary Clinton");
-//s.fetchDefinition(s.criteria);
-//s.fetchArticle(s.criteria);
 
 
 Search.prototype.fetchCollege = function (criteria) {
@@ -157,29 +167,30 @@ Search.prototype.fetchCollege = function (criteria) {
             url : "https://nearbycolleges.info/api/everything/" + unitid,
             dataType : "json",
             success : function(parsed_json) {
-                alert(JSON.stringify(parsed_json));
+                //alert(JSON.stringify(parsed_json));
 
                 college.city = parsed_json.result.location.city;
-                alert(college.city);
+                //alert(college.city);
                 college.state = parsed_json.result.location.state;
-                alert(college.state);
+                //alert(college.state);
                 college.name = parsed_json.result.location.name;
-                alert(college.name);
+                //alert(college.name);
                 college.admissions = parsed_json.result.admission.acceptanceRate + "%";
-                alert(college.admissions);
+                //alert(college.admissions);
                 college.population = parsed_json.result.enrollment.total + " students";
-                alert(college.population);
+                //alert(college.population);
                 college.link = parsed_json.result.location.admissionsWebsite;
-                alert(college.link);
+                //alert(college.link);
 
-                alert(JSON.stringify(college))
+                //alert(JSON.stringify(college))
 
             },
             error:function() {
-                alert("Error");
+                alert("We can't seem to find any information about that college. Be sure to check your spelling!");
             }
         });
     });
+    return college;
 
 };
 //s.fetchCollege(s.criteria);
@@ -188,12 +199,12 @@ Search.prototype.fetchWeather = function (criteria) {
     //find Two letter state code from name of city maybe another API
     var code = "CA";
     var city = "San Francisco";
+    var conditions = new Weather("", "", []);
     jQuery(document).ready(function($) {
         $.ajax({
             url : "http://api.wunderground.com/api/fbdc5ee3a169b24f/geolookup/conditions/q/" + code + "/" + city.replace(" ", "_") + ".json",
             dataType : "jsonp",
             success : function(parsed_json) {
-                var conditions = new Weather("", "", []);
                 conditions.city_name = parsed_json.location.city;
                 conditions.temperature = parsed_json.current_observation.temp_f;
                 conditions.current_conditions.push(parsed_json.current_observation.weather);
@@ -204,6 +215,22 @@ Search.prototype.fetchWeather = function (criteria) {
             }
         });
     });
+    return conditions;
 };
 
-s.fetchWeather(s.criteria);
+Search.prototype.fetchWiki = function (criteria) {
+    jQuery(document).ready(function($) {
+        $.ajax({
+            url : "https://en.wikipedia.org/w/api.php?action=query&titles=Radio&prop=revisions&rvprop=content&format=xml",
+            dataType : "xml",
+            success : function(parsed_json) {
+                //alert(JSON.stringify(parsed_json));
+                alert((new XMLSerializer()).serializeToString(parsed_json));
+
+            },
+            error:function() {
+                alert("Error");
+            }
+        });
+    });
+};
