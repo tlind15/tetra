@@ -5,16 +5,26 @@ Search = function(category, criteria) {
     this.time = Date.now();
     this.category = category;
     this.criteria = criteria;
-    this.submit = function () {
+    /*this.submit = function () {
         //based on those call appropriate api call function
         if (category == "Article")
-            this.fetchArticle(this.criteria);
+            return this.fetchArticle(this.criteria);
         else if (category == "College")
-            this.fetchCollege(this.criteria);
+            return this.fetchCollege(this.criteria);
         else if (category == "Definition")
-            this.fetchDefinition(this.criteria);
+            return this.fetchDefinition(this.criteria);
 
-    }
+    }*/
+};
+
+Search.prototype.submit = function () {
+    if (this.category == "Article")
+        return this.fetchArticle(this.criteria);
+    else if (this.category == "College")
+        return this.fetchCollege(this.criteria);
+    else if (this.category == "Definition")
+        return this.fetchDefinition(this.criteria);
+
 };
 
 Search.prototype.fetchArticle = function (criteria) {
