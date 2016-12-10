@@ -103,3 +103,6 @@ $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
 );
 
 var banana = {"word":"banana","partOfSpeech":" noun ","definition":" :an elongated usually tapering tropical fruit with soft pulpy flesh enclosed in a soft usually yellow rind ","synonym":""};
+var associate = {"word":"associate","partOfSpeech":"verb:adjective:noun:","definition":" :to join as a partner, friend, or companion :to keep company with :to join or connect together ","synonym":"cohort, companion, compatriot, compeer, comrade, crony, fellow, hobnobber, mate, running mate"}
+
+
