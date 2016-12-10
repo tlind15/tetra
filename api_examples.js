@@ -101,3 +101,5 @@ $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
         alert(ip);
     }
 );
+
+var banana = {"word":"banana","partOfSpeech":" noun ","definition":" :an elongated usually tapering tropical fruit with soft pulpy flesh enclosed in a soft usually yellow rind ","synonym":""};
