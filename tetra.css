@@ -1,0 +1,668 @@
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#header-box {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 10%;
+  border: 4px solid black;
+  background: white;
+  position: fixed;
+  text-align: center;
+  font-size: 5vh;
+  font-family: Courier New;
+  padding: 1.5%
+}
+
+#category-name {
+	top: 2%;
+	left: 83.8%;
+	position: fixed;
+	height: 4%;
+	width: 5%;
+	text-align: left justify;
+	font-family: Times New Roman;
+	font-size: 3vh;
+}
+
+#category-box {
+	top: 6%;
+	left: 84%;
+	position: fixed;
+	height: 3%;
+	width: 5%;
+	font-size: 16px;
+}
+
+.option-style {
+	font-size: 16px;
+}
+
+#help-box {
+  top: 10%;
+  left: 0%;
+  width: 100%;
+  height: 90%;
+  background: #eeeeff;
+  border: 4px solid black;
+  position: fixed;
+  text-align: left;
+  font-size: 4vh;
+  padding: 1.5%;
+  z-index: 1;
+}
+
+.help-close-button {
+  top: 11%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: #eeeeff;
+}
+
+.twoLeft-close{
+  top: 11.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.twoRight-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeUp-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeLeft-close{
+  top: 50.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeRight-close{
+  top: 50.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourUpL-close{
+  top: 11.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourUpR-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourDownL-close{
+  top: 51.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourDownR-close{
+  top: 51.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.plus-sign {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.plus-sign .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign:hover .tooltip {
+    visibility: visible;
+}
+
+.plus-sign2 {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+
+.plus-sign2 .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign2:hover .tooltip {
+    visibility: visible;
+}
+
+.help-button {
+  top: 1%;
+  left: 89%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  cursor: help;
+}
+
+.help-button .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 25%;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.help-button:hover .tooltip {
+    visibility: visible;
+}
+
+#tetra-symbol {
+  top: 1%;
+  left: 1%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+
+#one-panel {}
+
+#main-box {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 100%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+input[type=text] {
+  padding: 0.5em;
+}
+
+#searchbar-main {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 93.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-m-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-m-sub:hover {
+	background: rgba(175,175,255,.5); 
+} 
+
+#two-panels {}
+
+#two-leftbox {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#two-rightbox {
+  top: 11%;
+  left: 50%;
+  height: 85%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#searchbar-left-two {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-right-two {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-twoL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-twoR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-twoL-sub:hover {
+	background: rgba(175,175,255,.5);  
+} 
+
+#sb-twoR-sub:hover {
+	background: rgba(175,175,255,.5);
+} 
+
+#three-panels {}
+
+#three-mainbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 100%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#three-leftbox {
+  top: 49.9%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#three-rightbox {
+  top: 49.9%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#searchbar-main-three {
+  top: 46%;
+  left: 0%;
+  height: 4.1%;
+  width: 93.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-left-three {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-right-three {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-threeT-sub{
+  top: 46%;
+  left: 93%;
+  height: 4.1%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeT-sub:hover {
+	background: rgba(175,175,255,.5);  
+}
+
+#sb-threeL-sub:hover {
+	background: rgba(175,175,255,.5);  
+} 
+
+#sb-threeR-sub:hover {
+	background: rgba(175,175,255,.5);
+} 
+
+#four-panels {}
+
+#four-topleftbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#four-toprightbox {
+  top: 11%;
+  left: 50%;
+  height: 35%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#four-botleftbox {
+  top: 50%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#four-botrightbox {
+  top: 50%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 4vh;
+}
+
+#searchbar-topleft-four {
+  top: 46%;
+  left: 0%;
+  height: 4.2%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-topright-four {
+  top: 46%;
+  left: 50%;
+  height: 4.2%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-botleft-four {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-botright-four {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-fourTL-sub{
+  top: 46%;
+  left: 43%;
+  height: 4.2%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourTR-sub{
+  top: 46%;
+  left: 93%;
+  height: 4.2%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourBL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourBR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourTL-sub:hover {
+	background: rgba(175,175,255,.5);  
+}
+
+#sb-fourTR-sub:hover {
+	background: rgba(175,175,255,.5);  
+}
+
+#sb-fourBL-sub:hover {
+	background: rgba(175,175,255,.5);  
+} 
+
+#sb-fourBR-sub:hover {
+	background: rgba(175,175,255,.5);
+} 
