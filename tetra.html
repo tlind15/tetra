@@ -31,15 +31,15 @@
 						var w = new Search(selectedValue, search1);
 						var t = w.submit();
 						console.log(t);
-						var wordS = t.word;
+						var wordS = t[0].word;
 						console.log(wordS);
-						var posS = t.partOfSpeech;
+						var posS = t[0].partOfSpeech;
 						console.log(posS);
 						posS = posS.split(":");
-						var defS = t.definition;
+						var defS = t[0].definition;
 						defS = defS.split(":");
 						defS.shift();
-						var synS = t.synonym;
+						var synS = t[0].synonym;
 						document.getElementById('main-box').innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;
 					}
 				}
