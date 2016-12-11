@@ -267,7 +267,7 @@ img {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 input[type=text] {
@@ -313,7 +313,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #two-rightbox {
@@ -326,7 +326,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #searchbar-left-two {
@@ -395,7 +395,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #three-leftbox {
@@ -408,7 +408,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #three-rightbox {
@@ -421,7 +421,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #searchbar-main-three {
@@ -517,7 +517,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #four-toprightbox {
@@ -530,7 +530,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #four-botleftbox {
@@ -543,7 +543,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #four-botrightbox {
@@ -556,7 +556,7 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #searchbar-topleft-four {

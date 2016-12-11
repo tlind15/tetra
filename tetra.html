@@ -28,19 +28,24 @@
 					
 					if(selectedValue == "Definition")
 					{
-						var wordS = associate.word;
-						var posS = associate.partOfSpeech;
+						var w = new Search(selectedValue, search1);
+						var t = w.submit();
+						console.log(t);
+						var wordS = t.word;
+						console.log(wordS);
+						var posS = t.partOfSpeech;
+						console.log(posS);
 						posS = posS.split(":");
-						var defS = associate.definition;
-						defS = defS.split(":")
+						var defS = t.definition;
+						defS = defS.split(":");
 						defS.shift();
-						var synS = associate.synonym;
-						document.getElementById('main-box').innerHTML = wordS+"\n "+posS[0]+"\n "+defS[0]+"\n "+synS;
+						var synS = t.synonym;
+						document.getElementById('main-box').innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;
 					}
 				}
 			}
 			
-			
+			//static variables or testing
 			var banana = {"word":"banana","partOfSpeech":" noun ","definition":" :an elongated usually tapering tropical fruit with soft pulpy flesh enclosed in a soft usually yellow rind ","synonym":""};
 			var associate = {"word":"associate","partOfSpeech":"verb:adjective:noun:","definition":" :to join as a partner, friend, or companion :to keep company with :to join or connect together ","synonym":"cohort, companion, compatriot, compeer, comrade, crony, fellow, hobnobber, mate, running mate"}
 			
