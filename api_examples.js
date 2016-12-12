@@ -116,3 +116,4 @@ var article_obj = {
 //so weather will called from inside college. College needs to use socket.io and will append the information to the HTML. 
 //but I need Hunter to design the <div> that will hold the information from both college and weather 
 var weather_obj = {"city_name":"San Francisco","temperature":51.7,"current_conditions":["Overcast","http://icons.wxug.com/i/c/k/nt_cloudy.gif"]} //the link is the icon representing the weather
+var college_obj = {"city":"Los Angeles","state":"California","country":"","name":"University of California-Los Angeles","admissions":"22%","population":"40795 students","link":"www.admissions.ucla.edu/"}
