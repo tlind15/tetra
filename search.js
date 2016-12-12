@@ -214,7 +214,7 @@ Search.prototype.fetchDefinition = function (criteria) {
 Search.prototype.fetchCollege = function (criteria) {
     //college search
     //logic that will convert name to a unitID
-    var college = new College("", "", "", "", "", "", "");
+    var college = new College("", "", "", "", "", "");
     var unitid = "110662";
     var temp = {"college": criteria};
     send(temp);
