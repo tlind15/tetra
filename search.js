@@ -44,13 +44,15 @@ Search.prototype.fetchArticle = function (criteria) {
                 articles[i].title = parsed_json.response.results[i].webTitle; //web title is the article titles
 
                 articles[i].article = parsed_json.response.results[i].fields.bodyText; //body text represents the tex of the article
+                //var text = parsed_json.response.results[i].fields.bodyText;
+                //articles[i].article = sum({ 'corpus': text });
 
                 articles[i].link = parsed_json.response.results[i].webUrl; //weburl is the link to the site where this article is posted
             }
         }
     });
     //******
-    //send(articles) //this sends the article to the backend server via socket.io
+
     return articles;
 };
 
@@ -187,17 +189,17 @@ Search.prototype.fetchDefinition = function (criteria) {
                     var synonyms = parsed_xml.getElementsByTagName("syn")[0].childNodes; //the <syn> only contains one child node
                     var word = ""; //holds the value of the childNode for comparison
                     word = synonyms[0].nodeValue;
-                    
+
                     //if word has a value, we remove any junk parentheses that exists, as store it in the synonym attribute
                     if (word !== null)
                         entries[k].synonym += word.replace(/ *\([^)]*\) */g, ""); //words come in  comma separated list from API
-                
+
                 } else //in the parsed_xml, if the childnode of the <syn> tag has nothing or does not exist then there are no synonyms listed for that word
                     alert("We couldn't find any synonyms in our records.");
-                
+
             },
             //***end of successful server response function
-            
+
             error:function() {
                 alert("We couldn't find any synonyms in our records.");
             }
@@ -213,13 +215,14 @@ Search.prototype.fetchCollege = function (criteria) {
     //college search
     //logic that will convert name to a unitID
     var college = new College("", "", "", "", "", "", "");
-    var unitid = "200059";
-
-    /*send(criteria);
-    *
+    var unitid = "110662";
+    var temp = {"college": criteria};
+    send(temp);
+    /*
     *
     * socket.on('new message', function(data){
-      var unitid = data*/
+      var unitid = data.college_id
+      var s_code = data.state*/
         $.ajax({
             url : "https://nearbycolleges.info/api/everything/" + unitid,
             dataType : "json",
@@ -239,9 +242,13 @@ Search.prototype.fetchCollege = function (criteria) {
                 //alert(college.population);
                 college.link = parsed_json.result.location.admissionsWebsite;
                 //alert(college.link);
+                // college.conditions = college.fetchWeather(college.city, data.code);
 
-                alert(JSON.stringify(college));
-                return college; //(do not actually need when socket is used)
+                //college.category = "College";
+                //college.criteria = criteria;
+
+                //document.write(JSON.stringify(college));
+                //return college; (do not actually need when socket is used)
             },
             error:function() {
                 alert("We can't seem to find any information about that college. Be sure to check your spelling!");
@@ -252,41 +259,21 @@ Search.prototype.fetchCollege = function (criteria) {
 
 };
 
-Search.prototype.fetchWeather = function (criteria) {
-    //find Two letter state code from name of city maybe another API
-    var code = "CA";
-    var city = "San Francisco";
-    var conditions = new Weather("", "", []);
-        $.ajax({
-            url : "http://api.wunderground.com/api/fbdc5ee3a169b24f/geolookup/conditions/q/" + code + "/" + city.replace(" ", "_") + ".json",
-            dataType : "json",
-            async : false,
-            success : function(parsed_json) {
-                conditions.city_name = parsed_json.location.city;
-                conditions.temperature = parsed_json.current_observation.temp_f;
-                conditions.current_conditions.push(parsed_json.current_observation.weather);
-                conditions.current_conditions.push(parsed_json.current_observation.icon_url);
+function send (data) {
+            var socket = io.connect();
+            
+            socket.emit('send message',data);
+                            
+            socket.on('new message', function(data){
+                var cat_name = data.msg2;
+                var values = data.msg1;
+                console.log(data.msg1);
+                console.log(data.msg2);
+                /*for (i in cat_name){
+                $results.append('<div class = "return">'+cat_name[i]+':'+values[i]+'</div>');
+            }*/
+            });
+        };
 
-                alert(JSON.stringify(conditions));
-
-            }
-        });
-    return conditions;
-};
-
-Search.prototype.fetchWiki = function (criteria) {
-    jQuery(document).ready(function($) {
-        $.ajax({
-            url : "https://en.wikipedia.org/w/api.php?action=query&titles=Radio&prop=revisions&rvprop=content&format=xml",
-            dataType : "xml",
-            success : function(parsed_json) {
-                //alert(JSON.stringify(parsed_json));
-                alert((new XMLSerializer()).serializeToString(parsed_json));
-
-            },
-            error:function() {
-                alert("Error");
-            }
-        });
-    });
-};
+var c = new Search("a", "b");
+c.fetchCollege("University of California-Los Angeles");
