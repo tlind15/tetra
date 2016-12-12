@@ -8,22 +8,16 @@ Weather.prototype.display = function () {
     //decide how to display
 };
 
-Locality = function (city, state, country) {
+
+College = function (city, state, name, admissions, population, link) {
     this.city = city;
     this.state = state;
-    this.country = country;
-};
-
-College = function (city, state, country, name, admissions, population, link) {
-    Locality.call(this, city, state, country);
     this.name = name;
     this.admissions = admissions;
     this.population = population;
     this.link = link;
 
 };
-College.prototype = Object.create(Locality.prototype);
-College.prototype.constructor = College;
 
 College.prototype.fetchWeather = function (criteria, code) {
     //find Two letter state code from name of city maybe another API
