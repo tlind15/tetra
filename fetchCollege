@@ -1,0 +1,47 @@
+Search.prototype.fetchCollege = function (criteria) {
+    //college search
+    //logic that will convert name to a unitID
+    var college = new College("", "", "", "", "", "");
+    var temp = {college: criteria};
+    var count1 = 0;
+    var count2 = 0;
+
+    
+    socket.emit('send message', temp);
+       
+
+    socket.on('new message', function(data){
+        var unitid = data.college_id;
+        var s_code = data.state;
+        console.log(unitid);
+        $.ajax({
+            url : "https://nearbycolleges.info/api/everything/" + unitid,
+            dataType : "json",
+            async : true,
+            success : function(parsed_json) {
+                //alert(JSON.stringify(parsed_json));
+
+                college.city = parsed_json.result.location.city;
+                //alert(college.city);
+                college.state = parsed_json.result.location.state;
+                //alert(college.state);
+                college.name = parsed_json.result.location.name;
+                //alert(college.name);
+                college.admissions = parsed_json.result.admission.acceptanceRate + "%";
+                //alert(college.admissions);
+                college.population = parsed_json.result.enrollment.total + " students";
+                //alert(college.population);
+                college.link = parsed_json.result.location.admissionsWebsite;
+                //alert(college.link);
+                college.conditions = college.fetchWeather(college.city, data.state);
+
+                socket.emit('send message', college);
+                    
+            },
+            error:function() {
+                alert("We can't seem to find any information about that college. Be sure to check your spelling!");
+            }
+        });
+        //$results.append('<div class = "return">'+cat_name[i]+':'+values[i]+'</div>');
+    });
+};
