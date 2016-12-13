@@ -11,11 +11,25 @@
 	<script type="text/javascript">
 			
 			var p1 = "main-box";
-			var p2 = "two-leftbox"
-			var	p3 = "two-rightbox"		
+			var p2 = "two-leftbox";
+			var	p3 = "two-rightbox";
+			var p4 = "three-mainbox";
+			var p5 = "three-leftbox";
+			var	p6 = "three-rightbox";
+			var p7 = "four-topleftbox";
+			var p8 = "four-toprightbox";
+			var	p9 = "four-botleftbox";
+			var	p10 = "four-botrightbox";	
 			var sb1 = "searchbar-main";
 			var sb2 = "searchbar-left-two";
 			var sb3 = "searchbar-right-two";
+			var sb4 = "searchbar-main-three";
+			var sb5 = "searchbar-left-three";
+			var sb6 = "searchbar-right-three";
+			var sb7 = "searchbar-topleft-four";
+			var sb8 = "searchbar-topright-four";
+			var sb9 = "searchbar-botleft-four";
+			var sb10 = "searchbar-botright-four";
 			
 			//grabs entry from searchbar, stores it into a var, clears field, then displays the info
 			function showPanel(which)
@@ -52,6 +66,13 @@
 					case 1: return sb1;
 					case 2: return sb2;
 					case 3: return sb3;
+					case 4: return sb4;
+					case 5: return sb5;
+					case 6: return sb6;
+					case 7: return sb7;
+					case 8: return sb8;
+					case 9: return sb9;
+					case 10: return sb10;
 					default: return sb1;
 				}
 			}
@@ -63,6 +84,13 @@
 					case 1: return p1;
 					case 2: return p2;
 					case 3: return p3;
+					case 4: return p4;
+					case 5: return p5;
+					case 6: return p6;
+					case 7: return p7;
+					case 8: return p8;
+					case 9: return p9;
+					case 10: return p10;
 					default: return p1;
 				}
 			}
@@ -189,10 +217,10 @@
 			<input type="search" id="searchbar-topright-four" autocomplete="off">
 			<input type="search" id="searchbar-botleft-four" autocomplete="off">
 			<input type="search" id="searchbar-botright-four" autocomplete="off">
-			<input type="submit" id="sb-fourTL-sub" value="Search">
-			<input type="submit" id="sb-fourTR-sub" value="Search">
-			<input type="submit" id="sb-fourBL-sub" value="Search">
-			<input type="submit" id="sb-fourBR-sub" value="Search">
+			<input type="submit" id="sb-fourTL-sub" value="Search" onclick=showPanel(7)>
+			<input type="submit" id="sb-fourTR-sub" value="Search" onclick=showPanel(8)>
+			<input type="submit" id="sb-fourBL-sub" value="Search" onclick=showPanel(9)>
+			<input type="submit" id="sb-fourBR-sub" value="Search" onclick=showPanel(10)>
 		  </div>
 		  
 		</div>
@@ -245,9 +273,9 @@
 			<input type="search" id="searchbar-main-three" autocomplete="off">
 			<input type="search" id="searchbar-left-three" autocomplete="off">
 			<input type="search" id="searchbar-right-three" autocomplete="off">
-			<input type="submit" id="sb-threeT-sub" value="Search">
-			<input type="submit" id="sb-threeL-sub" value="Search">
-			<input type="submit" id="sb-threeR-sub" value="Search">
+			<input type="submit" id="sb-threeT-sub" value="Search" onclick=showPanel(4)>
+			<input type="submit" id="sb-threeL-sub" value="Search" onclick=showPanel(5)>
+			<input type="submit" id="sb-threeR-sub" value="Search" onclick=showPanel(6)>
 		  </div>
 		  
 		</div>
