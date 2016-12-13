@@ -1,3 +1,5 @@
+NOTE: Use zip file to test.  Node module folder too large to upoad, resides inside the .zip file.
+
 Work in progress: Do note that the insert queries for FKs are being worked on. Primary intent is to determine error checking for order insertion of the FKs. Intention is to 
 create the system to operate on a "black" box DB as much as possible, without explicit commands. 
 
