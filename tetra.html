@@ -5,6 +5,7 @@
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+	<script src="locality.js" type="text/javascript"></script>
 	<script src="definition.js" type="text/javascript"></script>
 	<script src="search.js" type="text/javascript"></script>
 	
@@ -59,6 +60,7 @@
 				}
 			}
 			
+			//selects correct searchbar based on int input from html function call
 			function sbSelect(searchB)
 			{
 				switch(searchB) 
@@ -77,6 +79,7 @@
 				}
 			}
 			
+			//selects correct panel to display to based on int input from html function call
 			function panelSelect(pan)
 			{
 				switch(pan) 
@@ -95,7 +98,7 @@
 				}
 			}
 			
-			
+			//searches definiton of user input
 			function definitionSearch(searchValue, panelID)
 			{
 						var w = new Search("Definition", searchValue);
@@ -107,7 +110,10 @@
 						defS = defS.split(":");
 						defS.shift();
 						var synS = t[0].synonym;
-						document.getElementById(panelID).innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;				
+						var obj=document.getElementById(panelID);
+						var txt=document.createTextNode(wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS+"\n\n");
+						obj.appendChild(txt);
+						//document.getElementById(panelID).innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;				
 			}
 			
 	</script>
@@ -151,7 +157,6 @@
 		  <select id="category-box" name="category">
 			<option class="option-style" value="selectcat">-- Select --</option>
 			<option class="option-style" value="Article">Article</option>
-			<option class="option-style" value="City">City</option>
 			<option class="option-style" value="College">College</option>
 			<option class="option-style" value="Definition">Definition</option>
 		  </select>
@@ -168,19 +173,19 @@
 			  </svg>
 			  <span class="tooltip">Max panels reached.</span>
 		  </div>
-		  <textarea id="four-topleftbox">
+		  <textarea id="four-topleftbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="four-toprightbox">
+		  <textarea id="four-toprightbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="four-botleftbox">
+		  <textarea id="four-botleftbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="four-botrightbox">
+		  <textarea id="four-botrightbox" readonly>
 
 		  </textarea>
 		  
@@ -236,15 +241,15 @@
 			  </svg>
 			  <span class="tooltip">Add 4th panel.</span>
 		  </div>
-		  <textarea id="three-mainbox">
+		  <textarea id="three-mainbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="three-leftbox">
+		  <textarea id="three-leftbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="three-rightbox">
+		  <textarea id="three-rightbox" readonly>
 
 		  </textarea>
 		  
@@ -291,11 +296,11 @@
 			  </svg>
 			  <span class="tooltip">Add 3rd panel.</span>
 		  </div>
-		  <textarea id="two-leftbox">
+		  <textarea id="two-leftbox" readonly>
 
 		  </textarea>
 
-		  <textarea id="two-rightbox">
+		  <textarea id="two-rightbox" readonly>
 
 		  </textarea>
 		  
@@ -333,7 +338,8 @@
 			  </svg>
 			  <span class="tooltip">Add 2nd panel.</span>
 		  </div>
-		  <textarea id="main-box">
+		  
+		  <textarea id="main-box" readonly>
 		  
 		  </textarea>
 
