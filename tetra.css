@@ -1,8 +1,14 @@
+/* Joshua Hightower
+   CECS 343
+   December 13th, 2016
+*/
+
+/* Style for images */
 img {
   max-width: 100%;
   max-height: 100%;
 }
-
+/* Positions and styles header box fixed at top of page. */
 #header-box {
   top: 0%;
   left: 0%;
@@ -16,7 +22,7 @@ img {
   font-family: Courier New;
   padding: 1.5%
 }
-
+/* Next 3 blocks style and position the category dropdown menu. */
 #category-name {
 	top: 2%;
 	left: 83.8%;
@@ -40,7 +46,7 @@ img {
 .option-style {
 	font-size: 16px;
 }
-
+/* Next 2 blocks style and position the help box. */
 #help-box {
   top: 10%;
   left: 0%;
@@ -64,7 +70,7 @@ img {
   cursor: pointer;
   background-color: #eeeeff;
 }
-
+/* The next 9 blocks style each close button and position it for each panel except for having one panel open. */
 .twoLeft-close{
   top: 11.5%;
   left: 47%;
@@ -154,7 +160,7 @@ img {
   cursor: pointer;
   background-color: white;
 }
-
+/* Next 9 blocks style and position the plus sign and help button in top right of page as well as their tooltips. */
 .plus-sign {
   top: 1%;
   left: 95%;
@@ -245,7 +251,7 @@ img {
 .help-button:hover .tooltip {
     visibility: visible;
 }
-
+/* Positions Tetra logo. */
 #tetra-symbol {
   top: 1%;
   left: 1%;
@@ -254,9 +260,9 @@ img {
   border-radius: 50%;
   position: fixed;
 }
-
+/* Used to contain all elements related to one panel. */
 #one-panel {}
-
+/* Position for having one panel open. */
 #main-box {
   top: 11%;
   left: 0%;
@@ -270,11 +276,11 @@ img {
   font-size: 2.5vh;
   font-family: Times New Roman;
 }
-
+/* Style of input text. */
 input[type=text] {
   padding: 0.5em;
 }
-
+/* Next 3 boxes style and position searchbar and submit button for one panel. */
 #searchbar-main {
   top: 96%;
   left: 0%;
@@ -301,9 +307,9 @@ input[type=text] {
 #sb-m-sub:hover {
 	background: rgba(175,175,255,.5); 
 } 
-
+/* Used to contain all elements related to two panels. */
 #two-panels {}
-
+/* Next 8 boxes style and position all panels, search bars and submit buttons for two panels. */
 #two-leftbox {
   top: 11%;
   left: 0%;
@@ -385,9 +391,9 @@ input[type=text] {
 #sb-twoR-sub:hover {
 	background: rgba(175,175,255,.5);
 } 
-
+/* Used to contain all elements related to three panels. */
 #three-panels {}
-
+/* Next 12 boxes style and position all panels, search bars and submit buttons for three panels. */
 #three-mainbox {
   top: 11%;
   left: 0%;
@@ -510,9 +516,9 @@ input[type=text] {
 #sb-threeR-sub:hover {
 	background: rgba(175,175,255,.5);
 } 
-
+/* Used to contain all elements related to four panels. */
 #four-panels {}
-
+/* Next 16 boxes style and position all panels, search bars and submit buttons for two panels. */
 #four-topleftbox {
   top: 11%;
   left: 0%;

@@ -1,3 +1,9 @@
+<!-- 
+	Joshua Hightower 
+	CECS 343
+	December 13th, 2016
+-->
+
 <link rel="stylesheet" type="text/css" href="tetra.css" media="screen" />
 
 <html>
@@ -13,6 +19,7 @@
 	<script type="text/javascript">
 			
 			//variables associated with the panels and searchbars
+			// NOTE: This method is not optimal - discovered how to properly pass string through Js function after this was implemented.
 			var p1 = "main-box";
 			var p2 = "two-leftbox";
 			var	p3 = "two-rightbox";
@@ -37,15 +44,18 @@
 			//grabs entry from searchbar, stores it into a var, clears field, then displays the info
 			function showPanel(which)
 			{
+				//store category selection into a variable
 				var obj = document.getElementById("category-box");
 				var selectedValue = obj.options[obj.selectedIndex].value;
 				
 				//checks if no option was chosen
+				// if none selected, alerts user
+				// if one selected, go to else statement
 				if(selectedValue == "selectcat")
 				{
 					alert("Please select a category.");
 				}
-				
+	
 				else
 				{
 					//stores panelID and search bar into variables, clears active searchbar, 
@@ -55,21 +65,22 @@
 					var search = document.getElementById(searchBar).value;
 					document.getElementById(searchBar).value = "";
 					
+					//if category is on Defintion, use defintion search function
 					if(selectedValue=="Definition")
 					{
 						definitionSearch(search, panel);
 					}
-					
+					//if category is on article, use article search function
 					else if(selectedValue=="Article")
 					{
 						articleSearch(search, panel);
 					}
-					
+					//if category is on College, use college search function
 					else if(selectedValue=="College")
 					{
 						collegeSearch(search, panel);
 					}
-					
+					//default cause to pass over; should never be hit
 					else {
 					
 					}
@@ -77,6 +88,8 @@
 			}
 			
 			//selects correct searchbar based on int input from html function call
+			// 1 refers to panel1, 2 refers to panel2, etc.
+			// NOTE: This method is not optimal - discovered how to properly pass string through Js function after this was implemented.
 			function sbSelect(searchB)
 			{
 				switch(searchB) 
@@ -96,6 +109,8 @@
 			}
 			
 			//selects correct panel to display to based on int input from html function call
+			// 1 refers to searchBar1, 2 refers to searchBar2, etc.
+			// NOTE: This method is not optimal - discovered how to properly pass string through Js function after this was implemented.
 			function panelSelect(pan)
 			{
 				switch(pan) 
@@ -114,7 +129,7 @@
 				}
 			}
 			
-			//searches definiton of user input
+			//searches definiton based on user input
 			function definitionSearch(searchValue, panelID)
 			{
 				var w = new Search("Definition", searchValue);
@@ -129,7 +144,7 @@
 				document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;					
 			}
 			
-			//searches article of user input
+			//searches article based on user input
 			function articleSearch(searchValue, panelID)
 			{
 				var a = new Search("Article", searchValue);
@@ -143,6 +158,7 @@
 				document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;
 			}
 			
+			//searches college based on user input; uses back-end for database look-up
 			function collegeSearch(searchValue, panelID)
 			{
 				var c = new Search("College", searchValue);
@@ -166,6 +182,7 @@
 			{
 				var obj1 = document.getElementById(panel1);
 				var txt1 = obj1.value;
+				//delete all text inside first parameter
 				while (obj1.firstChild) {
 					obj1.removeChild(obj1.firstChild);
 				}
@@ -237,7 +254,7 @@
 
 		<!-- Code for having four panels open. -->
 		<div id="four-panels">
-			<!-- Creates add sign for adding a panel with a tooltip.  Specific to four panels div. -->
+			<!-- Creates add sign for adding a panel with a tooltip.  Specific to four panels div. User unable to click on this one. -->
 			<div class="plus-sign2">
 			  <svg width=100% height=100%>
 				<rect x=20% width=25% height=90%
@@ -247,22 +264,17 @@
 			  </svg>
 			  <span class="tooltip">Max panels reached.</span>
 			</div>
-		  <textarea id="four-topleftbox" readonly>
+			
+		  <!-- Four textareas to store searched information to user. -->
+		  <textarea id="four-topleftbox" readonly></textarea>
 
-		  </textarea>
+		  <textarea id="four-toprightbox" readonly></textarea>
 
-		  <textarea id="four-toprightbox" readonly>
+		  <textarea id="four-botleftbox" readonly></textarea>
 
-		  </textarea>
-
-		  <textarea id="four-botleftbox" readonly>
-
-		  </textarea>
-
-		  <textarea id="four-botrightbox" readonly>
-
-		  </textarea>
+		  <textarea id="four-botrightbox" readonly></textarea>
 		  
+		  <!-- Four close buttons(one for each panel) that closes certain panels and swaps stored text based on which is closed. -->
 		  <div class="fourUpL-close" onclick="getElementById('three-panels').style.display='block'; panelSwap('four-toprightbox','three-mainbox'); panelSwap('four-botleftbox','three-leftbox'); panelSwap('four-botrightbox','three-rightbox'); panelClear('four-topleftbox');"/>
 			 <svg height=100% width=100%>
 			   <line x1=15% y1=15% x2=85% y2=85% style="stroke:#000;stroke-width:4" />
@@ -291,6 +303,7 @@
 			 </svg> 
 		  </div>
 		  
+		  <!-- Contains all elements for the search bars and submit buttons. -->
 		  <div>
 			<input type="search" id="searchbar-topleft-four" autocomplete="off">
 			<input type="search" id="searchbar-topright-four" autocomplete="off">
@@ -306,7 +319,7 @@
 
 		<!-- Code for having three panels open. -->
 		<div id="three-panels">
-			<!-- Creates add sign for adding a panel with a tooltip.  Specific to three panels div. -->
+			<!-- Creates add sign for adding a panel with a tooltip.  Specific to three panels div. Pushes stored text approiately to new panels on click. -->
 			<div class="plus-sign" onclick="getElementById('three-panels').style.display='none'; panelSwap('three-mainbox','four-topleftbox'); panelSwap('three-leftbox','four-toprightbox'); panelSwap('three-rightbox','four-botleftbox');"/>
 			  <svg width=100% height=100%>
 				<rect x=20% width=25% height=90%
@@ -317,18 +330,14 @@
 			  <span class="tooltip">Add 4th panel.</span>
 			</div>
 			
-		  <textarea id="three-mainbox" readonly>
+		  <!-- Three textareas to store searched information to user. -->	
+		  <textarea id="three-mainbox" readonly></textarea>
 
-		  </textarea>
+		  <textarea id="three-leftbox" readonly></textarea>
 
-		  <textarea id="three-leftbox" readonly>
-
-		  </textarea>
-
-		  <textarea id="three-rightbox" readonly>
-
-		  </textarea>
+		  <textarea id="three-rightbox" readonly></textarea>
 		  
+		   <!-- Three close buttons(one for each panel) that closes certain panels and swaps stored text based on which is closed. -->
 		   <div class="threeUp-close" onclick="getElementById('two-panels').style.display='block'; panelSwap('three-leftbox','two-leftbox'); panelSwap('three-rightbox','two-rightbox'); panelClear('three-mainbox');"/>
 			 <svg height=100% width=100%>
 			   <line x1=15% y1=15% x2=85% y2=85% style="stroke:#000;stroke-width:4" />
@@ -350,6 +359,7 @@
 			 </svg> 
 		  </div>
 		  
+		  <!-- Contains all elements for the search bars and submit buttons. -->
 		  <div>
 			<input type="search" id="searchbar-main-three" autocomplete="off">
 			<input type="search" id="searchbar-left-three" autocomplete="off">
@@ -364,7 +374,7 @@
 		<!-- Code for having two panels open. -->
 		<div id="two-panels">
 		
-			<!-- Creates add sign for adding a panel with a tooltip.  Specific to two panels div. -->
+			<!-- Creates add sign for adding a panel with a tooltip.  Specific to two panels div. Pushes stored text approiately to new panels on click. -->
 			<div class="plus-sign" onclick="getElementById('two-panels').style.display='none'; panelSwap('two-leftbox','three-mainbox'); panelSwap('two-rightbox','three-leftbox');"/>
 			  <svg width=100% height=100%>
 				<rect x=20% width=25% height=90%
@@ -375,14 +385,12 @@
 			  <span class="tooltip">Add 3rd panel.</span>
 			</div>
 			
-		  <textarea id="two-leftbox" readonly>
+		  <!-- Two textareas to store searched information to user. -->	
+		  <textarea id="two-leftbox" readonly></textarea>
 
-		  </textarea>
-
-		  <textarea id="two-rightbox" readonly>
-
-		  </textarea>
+		  <textarea id="two-rightbox" readonly></textarea>
 		  
+		  <!-- Two close buttons(one for each panel) that closes certain panels and swaps stored text based on which is closed. -->
 		  <div class="twoLeft-close" onclick="getElementById('one-panel').style.display='block'; panelSwap('two-rightbox','main-box'); panelClear('two-leftbox');"/>
 			 <svg height=100% width=100%>
 			   <line x1=15% y1=15% x2=85% y2=85% style="stroke:#000;stroke-width:4" />
@@ -397,6 +405,7 @@
 			 </svg> 
 		  </div>
 		  
+		  <!-- Contains all elements for the search bars and submit buttons. -->
 		  <div>
 			<input type="search" id="searchbar-left-two" autocomplete="off">
 			<input type="search" id="searchbar-right-two" autocomplete="off">
@@ -409,7 +418,7 @@
 		<!-- Code for having one panels open. -->
 		<div id="one-panel">
 		
-			<!-- Creates add sign for adding a panel with a tooltip.  Specific to one panel div. -->
+			<!-- Creates add sign for adding a panel with a tooltip.  Specific to one panel div. Pushes stored text approiately to new panels on click. -->
 			<div class="plus-sign" onclick="getElementById('one-panel').style.display='none'; panelSwap('main-box','two-leftbox');"/>
 			  <svg width=100% height=100%>
 				<rect x=20% width=25% height=90%
@@ -420,10 +429,10 @@
 			  <span class="tooltip">Add 2nd panel.</span>
 			</div>
 		  
-		  <textarea id="main-box" readonly>
-		  
-		  </textarea>
-
+		  <!-- One textarea to store searched information to user. -->
+		  <textarea id="main-box" readonly></textarea>
+			
+		  <!-- Contains all elements for the search bars and submit buttons. -->	
 		  <div>
 			<input type="search" id="searchbar-main" autocomplete="off">
 			<input type="submit" id="sb-m-sub" value="Search" onclick="showPanel(1);"/>
