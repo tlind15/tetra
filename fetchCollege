@@ -1,42 +1,40 @@
 Search.prototype.fetchCollege = function (criteria) {
     //college search
     //logic that will convert name to a unitID
-    var college = new College("", "", "", "", "", "");
-    var temp = {college: criteria};
-    var count1 = 0;
-    var count2 = 0;
+    var college = new College("", "", "", "", "", ""); //create a new college object
 
-    
-    socket.emit('send message', temp);
-       
+    /*we use socket.io to communicate with server. The user will type in the name of a college and that name is sent to server.
+     The server looks in the database for that name and returns a 6 digit number called the Unit ID. The
+     API requires this number for any information about a certain college.*/
+    var temp = {college: criteria}; //this is the object sent to the server. 'criteria' represents the name of the college typed in
 
-    socket.on('new message', function(data){
-        var unitid = data.college_id;
-        var s_code = data.state;
-        console.log(unitid);
+
+    socket.emit('send message', temp); //sends object with criteria back to the server
+
+    socket.on('new message', function(data){ //this listens for the server response to the object just sent. 'data' is the result object returned.
+        var unitid = data.college_id; //this is the 6 digit Unit ID
+        var s_code = data.state; //this is the 2 letter state code for the state where the college is located. This will be used for the weather API call
+
+        //***College REST API call***
         $.ajax({
             url : "https://nearbycolleges.info/api/everything/" + unitid,
             dataType : "json",
-            async : true,
             success : function(parsed_json) {
-                //alert(JSON.stringify(parsed_json));
 
-                college.city = parsed_json.result.location.city;
-                //alert(college.city);
-                college.state = parsed_json.result.location.state;
-                //alert(college.state);
-                college.name = parsed_json.result.location.name;
-                //alert(college.name);
-                college.admissions = parsed_json.result.admission.acceptanceRate + "%";
-                //alert(college.admissions);
-                college.population = parsed_json.result.enrollment.total + " students";
-                //alert(college.population);
-                college.link = parsed_json.result.location.admissionsWebsite;
-                //alert(college.link);
-                college.conditions = college.fetchWeather(college.city, data.state);
+                college.city = parsed_json.result.location.city; //city where the college is located. Along with the state code will be used for weather API call
 
-                socket.emit('send message', college);
-                    
+                college.state = parsed_json.result.location.state; //state where the college is located
+
+                college.name = parsed_json.result.location.name; //name of the college
+
+                college.admissions = parsed_json.result.admission.acceptanceRate + "%"; //acceptance rate for students at the college
+
+                college.population = parsed_json.result.enrollment.total + " students"; //total student population at school
+
+                college.link = parsed_json.result.location.admissionsWebsite; //link to admissions website
+
+                college.conditions = college.fetchWeather(college.city, data.state); //conditions is a weather object
+
             },
             error:function() {
                 alert("We can't seem to find any information about that college. Be sure to check your spelling!");
