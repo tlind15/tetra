@@ -1,0 +1,22 @@
+{
+  "name": "back_end",
+  "version": "1.0.0",
+  "description": "Backend to the Tetra service",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-mysql": "^0.4.2",
+    "socket.io": "*",
+    "ejs":"*",
+    "sum":"*",
+    "underscore.string":"*",
+    "underscore":"*",
+    "porter-stemmer":"*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tate McGeary",
+  "license": "ISC"
+
+}

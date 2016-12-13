@@ -1,0 +1,684 @@
+/* Joshua Hightower
+   CECS 343
+   December 13th, 2016
+*/
+
+/* Style for images */
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/* Positions and styles header box fixed at top of page. */
+#header-box {
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 10%;
+  border: 4px solid black;
+  background: white;
+  position: fixed;
+  text-align: center;
+  font-size: 5vh;
+  font-family: Courier New;
+  padding: 1.5%
+}
+/* Next 3 blocks style and position the category dropdown menu. */
+#category-name {
+  top: 2%;
+  left: 83.8%;
+  position: fixed;
+  height: 4%;
+  width: 5%;
+  text-align: left justify;
+  font-family: Times New Roman;
+  font-size: 3vh;
+}
+
+#category-box {
+  top: 6%;
+  left: 84%;
+  position: fixed;
+  height: 3%;
+  width: 5%;
+  font-size: 16px;
+}
+
+.option-style {
+  font-size: 16px;
+}
+/* Next 2 blocks style and position the help box. */
+#help-box {
+  top: 10%;
+  left: 0%;
+  width: 100%;
+  height: 90%;
+  background: #eeeeff;
+  border: 4px solid black;
+  position: fixed;
+  text-align: left;
+  font-size: 4vh;
+  padding: 1.5%;
+  z-index: 1;
+}
+
+.help-close-button {
+  top: 11%;
+  left: 97.5%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: #eeeeff;
+}
+/* The next 9 blocks style each close button and position it for each panel except for having one panel open. */
+.twoLeft-close{
+  top: 11.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.twoRight-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeUp-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeLeft-close{
+  top: 50.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.threeRight-close{
+  top: 50.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourUpL-close{
+  top: 11.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourUpR-close{
+  top: 11.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourDownL-close{
+  top: 51.5%;
+  left: 47%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+
+.fourDownR-close{
+  top: 51.5%;
+  left: 97%;
+  width: 2%;
+  height: 3%;
+  position: fixed;
+  cursor: pointer;
+  background-color: white;
+}
+/* Next 9 blocks style and position the plus sign and help button in top right of page as well as their tooltips. */
+.plus-sign {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.plus-sign .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign:hover .tooltip {
+    visibility: visible;
+}
+
+.plus-sign2 {
+  top: 1%;
+  left: 95%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+
+.plus-sign2 .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.plus-sign2:hover .tooltip {
+    visibility: visible;
+}
+
+.help-button {
+  top: 1%;
+  left: 89%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+  cursor: help;
+}
+
+.help-button .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 25%;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 105%;
+}
+
+.help-button:hover .tooltip {
+    visibility: visible;
+}
+/* Positions Tetra logo. */
+#tetra-symbol {
+  top: 1%;
+  left: 1%;
+  width: 6%;
+  height: 9%;
+  border-radius: 50%;
+  position: fixed;
+}
+/* Used to contain all elements related to one panel. */
+#one-panel {}
+/* Position for having one panel open. */
+#main-box {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 100%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+/* Style of input text. */
+input[type=text] {
+  padding: 0.5em;
+}
+/* Next 3 boxes style and position searchbar and submit button for one panel. */
+#searchbar-main {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 93.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-m-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-m-sub:hover {
+  background: rgba(175,175,255,.5); 
+} 
+/* Used to contain all elements related to two panels. */
+#two-panels {}
+/* Next 8 boxes style and position all panels, search bars and submit buttons for two panels. */
+#two-leftbox {
+  top: 11%;
+  left: 0%;
+  height: 85%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#two-rightbox {
+  top: 11%;
+  left: 50%;
+  height: 85%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#searchbar-left-two {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-right-two {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-twoL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-twoR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-twoL-sub:hover {
+  background: rgba(175,175,255,.5);  
+} 
+
+#sb-twoR-sub:hover {
+  background: rgba(175,175,255,.5);
+} 
+/* Used to contain all elements related to three panels. */
+#three-panels {}
+/* Next 12 boxes style and position all panels, search bars and submit buttons for three panels. */
+#three-mainbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 100%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#three-leftbox {
+  top: 49.9%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#three-rightbox {
+  top: 49.9%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#searchbar-main-three {
+  top: 46%;
+  left: 0%;
+  height: 4.1%;
+  width: 93.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-left-three {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-right-three {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-threeT-sub{
+  top: 46%;
+  left: 93%;
+  height: 4.1%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-threeT-sub:hover {
+  background: rgba(175,175,255,.5);  
+}
+
+#sb-threeL-sub:hover {
+  background: rgba(175,175,255,.5);  
+} 
+
+#sb-threeR-sub:hover {
+  background: rgba(175,175,255,.5);
+} 
+/* Used to contain all elements related to four panels. */
+#four-panels {}
+/* Next 16 boxes style and position all panels, search bars and submit buttons for two panels. */
+#four-topleftbox {
+  top: 11%;
+  left: 0%;
+  height: 35%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#four-toprightbox {
+  top: 11%;
+  left: 50%;
+  height: 35%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#four-botleftbox {
+  top: 50%;
+  left: 0%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#four-botrightbox {
+  top: 50%;
+  left: 50%;
+  height: 46%;
+  width: 50%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
+}
+
+#searchbar-topleft-four {
+  top: 46%;
+  left: 0%;
+  height: 4.2%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-topright-four {
+  top: 46%;
+  left: 50%;
+  height: 4.2%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-botleft-four {
+  top: 96%;
+  left: 0%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#searchbar-botright-four {
+  top: 96%;
+  left: 50%;
+  height: 4%;
+  width: 43.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  overflow: hidden;
+  font-size: 3vh;
+}
+
+#sb-fourTL-sub{
+  top: 46%;
+  left: 43%;
+  height: 4.2%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourTR-sub{
+  top: 46%;
+  left: 93%;
+  height: 4.2%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourBL-sub{
+  top: 96%;
+  left: 43%;
+  height: 4%;
+  width: 7.1%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourBR-sub{
+  top: 96%;
+  left: 93%;
+  height: 4%;
+  width: 7%;
+  background: #fff;
+  border: 2px solid black;
+  position: fixed;
+  font-size: 3vh;
+}
+
+#sb-fourTL-sub:hover {
+  background: rgba(175,175,255,.5);  
+}
+
+#sb-fourTR-sub:hover {
+  background: rgba(175,175,255,.5);  
+}
+
+#sb-fourBL-sub:hover {
+  background: rgba(175,175,255,.5);  
+} 
+
+#sb-fourBR-sub:hover {
+  background: rgba(175,175,255,.5);
+} 
