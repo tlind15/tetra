@@ -267,7 +267,8 @@ img {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 input[type=text] {
@@ -313,7 +314,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #two-rightbox {
@@ -326,7 +328,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #searchbar-left-two {
@@ -395,7 +398,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #three-leftbox {
@@ -408,7 +412,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #three-rightbox {
@@ -421,7 +426,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #searchbar-main-three {
@@ -517,7 +523,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #four-toprightbox {
@@ -530,7 +537,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #four-botleftbox {
@@ -543,7 +551,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #four-botrightbox {
@@ -556,7 +565,8 @@ input[type=text] {
   position: fixed;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: Times New Roman;
 }
 
 #searchbar-topleft-four {
