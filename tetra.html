@@ -10,8 +10,15 @@
 	
 	<script type="text/javascript">
 			
+			var p1 = "main-box";
+			var p2 = "two-leftbox"
+			var	p3 = "two-rightbox"		
+			var sb1 = "searchbar-main";
+			var sb2 = "searchbar-left-two";
+			var sb3 = "searchbar-right-two";
+			
 			//grabs entry from searchbar, stores it into a var, clears field, then displays the info
-			function showPanel1()
+			function showPanel(which)
 			{
 				var obj = document.getElementById("category-box");
 				var selectedValue = obj.options[obj.selectedIndex].value;
@@ -21,33 +28,59 @@
 					alert("Please select a category.");
 				}
 				
-				else 
+				else
 				{
-					var search1 = document.getElementById("searchbar-main").value;
-					document.getElementById('searchbar-main').value = "";
-					
-					if(selectedValue == "Definition")
+					var panel = panelSelect(which);
+					var searchBar = sbSelect(which);
+					var search = document.getElementById(searchBar).value;
+					document.getElementById(searchBar).value = "";
+					if(selectedValue=="Definition")
 					{
-						var w = new Search(selectedValue, search1);
+						definitionSearch(search, panel);
+					}
+					else 
+					{
+					
+					}
+				}
+			}
+			
+			function sbSelect(searchB)
+			{
+				switch(searchB) 
+				{
+					case 1: return sb1;
+					case 2: return sb2;
+					case 3: return sb3;
+					default: return sb1;
+				}
+			}
+			
+			function panelSelect(pan)
+			{
+				switch(pan) 
+				{
+					case 1: return p1;
+					case 2: return p2;
+					case 3: return p3;
+					default: return p1;
+				}
+			}
+			
+			
+			function definitionSearch(searchValue, panelID)
+			{
+						var w = new Search("Definition", searchValue);
 						var t = w.submit();
-						console.log(t);
 						var wordS = t[0].word;
-						console.log(wordS);
 						var posS = t[0].partOfSpeech;
-						console.log(posS);
 						posS = posS.split(":");
 						var defS = t[0].definition;
 						defS = defS.split(":");
 						defS.shift();
 						var synS = t[0].synonym;
-						document.getElementById('main-box').innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;
-					}
-				}
+						document.getElementById(panelID).innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;				
 			}
-			
-			//static variables or testing
-			var banana = {"word":"banana","partOfSpeech":" noun ","definition":" :an elongated usually tapering tropical fruit with soft pulpy flesh enclosed in a soft usually yellow rind ","synonym":""};
-			var associate = {"word":"associate","partOfSpeech":"verb:adjective:noun:","definition":" :to join as a partner, friend, or companion :to keep company with :to join or connect together ","synonym":"cohort, companion, compatriot, compeer, comrade, crony, fellow, hobnobber, mate, running mate"}
 			
 	</script>
 	
@@ -107,21 +140,21 @@
 			  </svg>
 			  <span class="tooltip">Max panels reached.</span>
 		  </div>
-		  <div id="four-topleftbox">
+		  <textarea id="four-topleftbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="four-toprightbox">
+		  <textarea id="four-toprightbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="four-botleftbox">
+		  <textarea id="four-botleftbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="four-botrightbox">
+		  <textarea id="four-botrightbox">
 
-		  </div>
+		  </textarea>
 		  
 		  <div class="fourUpL-close" onclick="getElementById('three-panels').style.display='block'">
 			 <svg height=100% width=100%>
@@ -175,17 +208,17 @@
 			  </svg>
 			  <span class="tooltip">Add 4th panel.</span>
 		  </div>
-		  <div id="three-mainbox">
+		  <textarea id="three-mainbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="three-leftbox">
+		  <textarea id="three-leftbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="three-rightbox">
+		  <textarea id="three-rightbox">
 
-		  </div>
+		  </textarea>
 		  
 		   <div class="threeUp-close" onclick="getElementById('two-panels').style.display='block'">
 			 <svg height=100% width=100%>
@@ -230,13 +263,13 @@
 			  </svg>
 			  <span class="tooltip">Add 3rd panel.</span>
 		  </div>
-		  <div id="two-leftbox">
+		  <textarea id="two-leftbox">
 
-		  </div>
+		  </textarea>
 
-		  <div id="two-rightbox">
+		  <textarea id="two-rightbox">
 
-		  </div>
+		  </textarea>
 		  
 		  <div class="twoLeft-close" onclick="getElementById('one-panel').style.display='block'">
 			 <svg height=100% width=100%>
@@ -255,8 +288,8 @@
 		  <div>
 			<input type="search" id="searchbar-left-two" autocomplete="off">
 			<input type="search" id="searchbar-right-two" autocomplete="off">
-			<input type="submit" id="sb-twoL-sub" value="Search">
-			<input type="submit" id="sb-twoR-sub" value="Search">
+			<input type="submit" id="sb-twoL-sub" value="Search" onclick=showPanel(2)>
+			<input type="submit" id="sb-twoR-sub" value="Search" onclick=showPanel(3)>
 		  </div>
 
 		</div>
@@ -278,7 +311,7 @@
 
 		  <div>
 			<input type="search" id="searchbar-main" autocomplete="off">
-			<input type="submit" id="sb-m-sub" value="Search" onclick=showPanel1();>
+			<input type="submit" id="sb-m-sub" value="Search" onclick=showPanel(1);>
 		  </div>
 		</div>
 	</body>
