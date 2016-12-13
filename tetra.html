@@ -7,6 +7,7 @@
     <script src="/socket.io/socket.io.js"></script>
 	<script src="locality.js" type="text/javascript"></script>
 	<script src="definition.js" type="text/javascript"></script>
+	<script src="article.js" type="text/javascript"></script>
 	<script src="search.js" type="text/javascript"></script>
 	
 	<script type="text/javascript">
@@ -38,6 +39,7 @@
 				var obj = document.getElementById("category-box");
 				var selectedValue = obj.options[obj.selectedIndex].value;
 				
+				//checks if no option was chosen
 				if(selectedValue == "selectcat")
 				{
 					alert("Please select a category.");
@@ -49,10 +51,17 @@
 					var searchBar = sbSelect(which);
 					var search = document.getElementById(searchBar).value;
 					document.getElementById(searchBar).value = "";
+					
 					if(selectedValue=="Definition")
 					{
 						definitionSearch(search, panel);
 					}
+					
+					else if(selectedValue=="Article")
+					{
+						articleSearch(search, panel);
+					}
+					
 					else 
 					{
 					
@@ -105,15 +114,29 @@
 						var t = w.submit();
 						var wordS = t[0].word;
 						var posS = t[0].partOfSpeech;
-						posS = posS.split(":");
+						//posS = posS.split(":");
 						var defS = t[0].definition;
-						defS = defS.split(":");
+						//defS = defS.split(":");
 						defS.shift();
 						var synS = t[0].synonym;
 						var obj=document.getElementById(panelID);
 						var txt=document.createTextNode(wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS+"\n\n");
 						obj.appendChild(txt);
 						//document.getElementById(panelID).innerHTML = wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS;				
+			}
+			
+			//searches article of user input
+			function articleSearch(searchValue, panelID)
+			{
+				var a = new Search("Article", searchValue);
+				var b = a.submit();
+				//console.log(b);
+				var title = b[0].title;
+				var text = b[0].article;
+				var link = b[0].link;
+				var obj=document.getElementById(panelID);
+				var txt=document.createTextNode(title+"\n  "+text+"\nLink:"+link+"\n\n");
+				obj.appendChild(txt);
 			}
 			
 	</script>
