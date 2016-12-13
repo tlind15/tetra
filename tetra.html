@@ -65,8 +65,12 @@
 						articleSearch(search, panel);
 					}
 					
-					else 
+					else if(selectedValue=="College")
 					{
+						collegeSearch(search, panel);
+					}
+					
+					else {
 					
 					}
 				}
@@ -113,16 +117,16 @@
 			//searches definiton of user input
 			function definitionSearch(searchValue, panelID)
 			{
-						var w = new Search("Definition", searchValue);
-						var t = w.submit();
-						var wordS = t[0].word;
-						var posS = t[0].partOfSpeech;
-						var defS = t[0].definition;
-						var synS = t[0].synonym;
-						var obj=document.getElementById(panelID);
-						var txt=document.createTextNode(wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS+"\n\n");
-						obj.appendChild(txt);
-						document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;					
+				var w = new Search("Definition", searchValue);
+				var t = w.submit();
+				var wordS = t[0].word;
+				var posS = t[0].partOfSpeech;
+				var defS = t[0].definition;
+				var synS = t[0].synonym;
+				var obj=document.getElementById(panelID);
+				var txt=document.createTextNode(wordS+"\nPart of Speech:  "+posS[0]+"\nDefinition: "+defS[0]+"\nSynonyms: "+synS+"\n\n");
+				obj.appendChild(txt);
+				document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;					
 			}
 			
 			//searches article of user input
@@ -135,6 +139,24 @@
 				var link = b[0].link;
 				var obj=document.getElementById(panelID);
 				var txt=document.createTextNode(title+"\n\t"+text+"\nLink: "+link+"\n\n");
+				obj.appendChild(txt);
+				document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;
+			}
+			
+			function collegeSearch(searchValue, panelID)
+			{
+				var c = new Search("College", searchValue);
+				var d = c.submit();
+				var city = d.city;
+				var state = d.state;
+				var col = d.name;
+				var ad = d.admissions;
+				var pop = d.population;
+				var link = d.link;
+				var temp = d.conditions.temperature;
+				var cur = d.conditions.current_conditions[0];
+				var obj=document.getElementById(panelID);
+				var txt=document.createTextNode(city+", "+state+"\n"+col+" - "+ad+" admissions\nPopulation: "+pop+"\nCurrent Temp. "+temp+" - "+cur+"\nLink: "+link);
 				obj.appendChild(txt);
 				document.getElementById(panelID).scrollTop = document.getElementById(panelID).scrollHeight;
 			}
