@@ -1,3 +1,5 @@
+var socket = io.connect();
+
 //***Define a search object***
 Search = function(category, criteria) {
     this.time = Date.now();
@@ -75,11 +77,11 @@ Search.prototype.fetchDefinition = function (criteria) {
             success : function(parsed_xml) { //API server responds successfully
                 //parsed_xml represents the result data back by the API server
                 /*getElementsByTagName("dt") creates an array containing each <dt> (some data inside) </dt>.
-                Each element includes the tags themselves and the data inside of them. The data inside often
-                includes more tags
-                childNodes are an array of references to the segments of data within each tag (a segment is everything after an opening tag up until
-                any other tag is reached).
-                nodeValue is the actual data value referenced by the childNode*/
+                 Each element includes the tags themselves and the data inside of them. The data inside often
+                 includes more tags
+                 childNodes are an array of references to the segments of data within each tag (a segment is everything after an opening tag up until
+                 any other tag is reached).
+                 nodeValue is the actual data value referenced by the childNode*/
 
                 //the length of this array therefore represents the amount dictionary entries a given word has
                 var size = parsed_xml.getElementsByTagName("dt").length;
@@ -88,17 +90,17 @@ Search.prototype.fetchDefinition = function (criteria) {
                 for (var j=0; j < size; j++) {
                     //The <ew> tag represents the dictionary word of interest
                     /*In this structure for each entry, the word may be listed. So if all of the entries were simply listed,
-                    * the same word could be printed several times which is unnecessary*/
+                     * the same word could be printed several times which is unnecessary*/
 
                     //***simple check if the entry has an <ew> tag***
                     if (parsed_xml.getElementsByTagName("ew")[j] !== undefined) {
 
                         /*Often times dictionaries have entries for similar words in the same dictionary entry. For example,
-                          * 'despair' and 'self-despair' are listed together.*/
+                         * 'despair' and 'self-despair' are listed together.*/
                         /*This statement checks if the current value of the <ew> tag is different than the previous value
-                          (case insensitive). If the current value is different than the previous, it signals that the current
-                          entry is for a related word and not the word the user originally entered. The system therefore breaks
-                          and moves on to the next word in words_criteria*/
+                         (case insensitive). If the current value is different than the previous, it signals that the current
+                         entry is for a related word and not the word the user originally entered. The system therefore breaks
+                         and moves on to the next word in words_criteria*/
                         if (j > 0 && parsed_xml.getElementsByTagName("ew")[j].childNodes[0].nodeValue.toLowerCase() !=
                             parsed_xml.getElementsByTagName("ew")[j-1].childNodes[0].nodeValue.toLowerCase()) {
                             break;
@@ -124,11 +126,11 @@ Search.prototype.fetchDefinition = function (criteria) {
                     //***'i' is the index for each childNode (or segment) in the <dt> tag***
                     for (var i = 0; i < data.length; i++) {
                         /*this will return the tag name of a childNode of <dt>. If a given segment is not within another tag,
-                        this will return undefined(see below)  */
+                         this will return undefined(see below)  */
                         tag = data[i].tagName;
 
                         /***first make sure a given child node exists. The second clause weeds out any segment that is
-                        just a single whitespace or special character ***/
+                         just a single whitespace or special character ***/
                         if (data[i].nodeValue !== null && data[i].nodeValue.length > 1) {
 
                             //the <fl> tag represents the part of speech
@@ -140,7 +142,7 @@ Search.prototype.fetchDefinition = function (criteria) {
                                 }
                             }
                             /*if data[i].tagName doesn't return a tagName then we know, that the node value contains the data of interest
-                            and we simply add it to the text string*/
+                             and we simply add it to the text string*/
                             if (tag === undefined)
                                 text += data[i].nodeValue;
 
@@ -151,10 +153,14 @@ Search.prototype.fetchDefinition = function (criteria) {
                         //the data within the tag is omitted when inside the above if statement
                         //if tag is not undefined than a tag inside <dt> exists
                         //these tags have one segment so the data is referenced in childNodes[0]
-                        if (tag !== undefined) {
-                            var temp = parsed_xml.getElementsByTagName(tag)[j].childNodes[0].nodeValue; //holds data in tag
-                            if (temp !== null) //if that data is not null we append it to the definition string 'text'
-                                text += temp;
+
+                        if (typeof(tag) === 'string') {
+                             if (tag == "d_link")
+                                 text += parsed_xml.getElementsByTagName("d_link")[j].childNodes[0].nodeValue;
+                             else if (tag == "un")
+                                 text += parsed_xml.getElementsByTagName("un")[j].childNodes[0].nodeValue;
+                             else if (tag == "fw")
+                                 text += parsed_xml.getElementsByTagName("fw")[j].childNodes[0].nodeValue;
                         }
                     }
                     //***end looping through childNodes of data[i]
@@ -216,13 +222,15 @@ Search.prototype.fetchCollege = function (criteria) {
     //logic that will convert name to a unitID
     var college = new College("", "", "", "", "", "");
     var unitid = "110662";
-    var temp = {"college": criteria};
-    send(temp);
-    /*
-    *
-    * socket.on('new message', function(data){
-      var unitid = data.college_id
-      var s_code = data.state*/
+    var temp = {college: criteria};
+    console.log(criteria);
+
+    socket.emit('send message', temp);
+
+    socket.on('new message', function(data){
+        var unitid = data.college_id;
+        var s_code = data.state;
+        console.log(unitid);
         $.ajax({
             url : "https://nearbycolleges.info/api/everything/" + unitid,
             dataType : "json",
@@ -231,9 +239,9 @@ Search.prototype.fetchCollege = function (criteria) {
                 //alert(JSON.stringify(parsed_json));
 
                 college.city = parsed_json.result.location.city;
-                alert(college.city);
+                //alert(college.city);
                 college.state = parsed_json.result.location.state;
-                alert(college.state);
+                //alert(college.state);
                 college.name = parsed_json.result.location.name;
                 //alert(college.name);
                 college.admissions = parsed_json.result.admission.acceptanceRate + "%";
@@ -242,7 +250,7 @@ Search.prototype.fetchCollege = function (criteria) {
                 //alert(college.population);
                 college.link = parsed_json.result.location.admissionsWebsite;
                 //alert(college.link);
-                // college.conditions = college.fetchWeather(college.city, data.code);
+                college.conditions = college.fetchWeather(college.city, data.state);
 
                 //college.category = "College";
                 //college.criteria = criteria;
@@ -254,26 +262,6 @@ Search.prototype.fetchCollege = function (criteria) {
                 alert("We can't seem to find any information about that college. Be sure to check your spelling!");
             }
         });
-    //$results.append('<div class = "return">'+cat_name[i]+':'+values[i]+'</div>');
-    //});
-
+        //$results.append('<div class = "return">'+cat_name[i]+':'+values[i]+'</div>');
+    });
 };
-
-function send (data) {
-            var socket = io.connect();
-            
-            socket.emit('send message',data);
-                            
-            socket.on('new message', function(data){
-                var cat_name = data.msg2;
-                var values = data.msg1;
-                console.log(data.msg1);
-                console.log(data.msg2);
-                /*for (i in cat_name){
-                $results.append('<div class = "return">'+cat_name[i]+':'+values[i]+'</div>');
-            }*/
-            });
-        };
-
-var c = new Search("a", "b");
-c.fetchCollege("University of California-Los Angeles");
